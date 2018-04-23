@@ -1,0 +1,9 @@
+set:
+
+-- issubset()
+      
+      s.issubset(t)
+ 
+测试是否 集合s 中的每一个元素都在 t 中
+    
+    

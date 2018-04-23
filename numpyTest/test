@@ -1,0 +1,11 @@
+nonzero()，返回数组a中值不为零的元素的下标，它的返回值是一个长度为a.ndim(数组a的轴数)的元组，元组的每个元素都是一个整数数组，其值为非零元素的下标在对应轴上的值。
+https://www.cnblogs.com/1zhk/articles/4782812.html
+http://blog.csdn.net/roler_/article/details/42395393
+
+mean()，求取均值，其参数axis常用，以m * n矩阵举例：
+axis 不设置值，对 m*n 个数求均值，返回一个实数
+axis = 0：压缩行，对各列求均值，返回 1* n 矩阵
+axis =1 ：压缩列，对各行求均值，返回 m *1 矩阵
+http://blog.csdn.net/taotiezhengfeng/article/details/72397282 
+
+var()，求方差
