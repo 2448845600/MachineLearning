@@ -4,13 +4,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-# 本笔记目的是通过tensorflow实现一个两层的神经网络。目的是实现一个二次函数的拟合
+# 通过tensorflow实现一个两层的神经网络，目的是实现一个二次函数的拟合
+# 增加一层神经网络，输出结果
 def add_layer(inputs, in_size, out_size, activation_function=None):
     # 注意该函数中是xW+b，而不是Wx+b。所以要注意乘法的顺序。x应该定义为[类别数量， 数据数量]， W定义为[数据类别，类别数量]。
     # add one more layer and return the output of this layer
     Weights = tf.Variable(tf.random_normal([in_size, out_size]))
     biases = tf.Variable(tf.zeros([1, out_size]) + 0.1)
-    Wx_plus_b = tf.matmul(inputs, Weights) + biases
+    Wx_plus_b = tf.matmul(inputs, Weights) + biases  # 矩阵乘法
     if activation_function is None:
         outputs = Wx_plus_b
     else:
@@ -19,9 +20,14 @@ def add_layer(inputs, in_size, out_size, activation_function=None):
 
 
 # Make up some real data
-x_data = np.linspace(-1, 1, 300)[:, np.newaxis]
-noise = np.random.normal(0, 0.05, x_data.shape)  # noise函数为添加噪声所用，这样二次函数的点不会与二次函数曲线完全重合。
-y_data = np.square(x_data) - 0.5 + noise
+def productData():
+    x_data = np.linspace(-1, 1, 300)[:, np.newaxis]
+    noise = np.random.normal(0, 0.05, x_data.shape)  # noise函数为添加噪声所用，这样二次函数的点不会与二次函数曲线完全重合。
+    y_data = np.square(x_data) - 0.5 + noise
+    return x_data, noise, y_data
+
+
+x_data, noise, y_data = productData()
 
 # define placeholder for inputs to network
 xs = tf.placeholder(tf.float32, [None, 1])
